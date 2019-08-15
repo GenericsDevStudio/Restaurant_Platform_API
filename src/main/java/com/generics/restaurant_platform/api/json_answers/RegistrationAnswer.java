@@ -1,4 +1,4 @@
 package com.generics.restaurant_platform.api.json_answers;
 
-public class ListAnswer {
+public class RegistrationAnswer {
 }
