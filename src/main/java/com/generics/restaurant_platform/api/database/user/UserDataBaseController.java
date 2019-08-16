@@ -1,8 +1,11 @@
-package com.generics.restaurant_platform.api.sql.user;
+package com.generics.restaurant_platform.api.database.user;
 
 import com.generics.restaurant_platform.api.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserDataBaseController {
@@ -15,7 +18,11 @@ public class UserDataBaseController {
         return user;
     }
 
-    public Iterable<User> getAllUsers() {
-        return userTable.findAll();
+    public List<User> getAllUsers() {
+        return new ArrayList(userTable.findAll());
+    }
+
+    public User findUser(String email) {
+        return userTable.findByEmail(email);
     }
 }
