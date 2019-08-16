@@ -15,10 +15,10 @@ public class LoginController {
     private UserDataBaseController userDataBaseController;
 
     //TODO request method = post
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Answer login(String email, String pass) {
         User user = userDataBaseController.findUser(email);
-        if(user == null) return new Answer(400, "User does not exist!");
+        if(user == null) return new Answer(404, "User does not exist!");
         if(user.getPass().equals(pass)) {
             return new RegistrationAnswer(200, "OK", user.getId());
         } else {
