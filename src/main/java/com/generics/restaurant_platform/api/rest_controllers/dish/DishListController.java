@@ -19,4 +19,9 @@ public class DishListController {
     public Answer getDishes() {
         return new ListAnswer<Dish>(200, "OK", dishDataBaseController.getAllDishes());
     }
+
+    @RequestMapping(value = "/getDishesByCategory", method = RequestMethod.GET)
+    public Answer getDishes(int categoryId) {
+        return new ListAnswer<Dish>(200, "OK", dishDataBaseController.getAllDishesByCategory(categoryId));
+    }
 }

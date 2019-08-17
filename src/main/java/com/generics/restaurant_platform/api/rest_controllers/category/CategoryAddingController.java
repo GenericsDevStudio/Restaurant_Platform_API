@@ -18,7 +18,8 @@ public class CategoryAddingController {
     @RequestMapping(value = "/addCategory", method = RequestMethod.GET)
     public Answer addCategory(String name) {
         if(categoryDataBaseController.findCategory(name) == null) {
-            Category category = categoryDataBaseController.addCategory(name);
+            Category category = new Category(name);
+            categoryDataBaseController.addCategory(category);
             return new RegistrationAnswer(200, "OK", category.getId());
         } else {
             return new Answer(400, "Category already exists");

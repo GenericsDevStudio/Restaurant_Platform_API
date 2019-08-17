@@ -12,10 +12,8 @@ public class UserDataBaseController {
     @Autowired
     private UserTable userTable;
 
-    public User addUser(String fio, String email, String pass) {
-        User user = new User(fio, email, pass);
+    public void addUser(User user) {
         userTable.save(user);
-        return user;
     }
 
     public List<User> getAllUsers() {

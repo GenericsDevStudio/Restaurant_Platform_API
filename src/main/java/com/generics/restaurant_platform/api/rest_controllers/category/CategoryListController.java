@@ -22,5 +22,4 @@ public class CategoryListController {
         List<Category> list = categoryDataBaseController.getAllCategories();
         return new ListAnswer<Category>(200, "OK", list);
     }
-
 }

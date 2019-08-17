@@ -18,7 +18,8 @@ public class DishAddingController {
     @RequestMapping(value = "/addDish", method = RequestMethod.GET)
     public Answer addDish(int categoryId, String name, String description, String price) {
         if(dishDataBaseController.findDish(name) == null) {
-            Dish dish = dishDataBaseController.addDish(categoryId, name, description, price);
+            Dish dish = new Dish(categoryId, name, description, price);
+            dishDataBaseController.addDish(dish);
             return new RegistrationAnswer(200, "OK", dish.getId());
         } else {
             return new Answer(400, "Dish already exists");

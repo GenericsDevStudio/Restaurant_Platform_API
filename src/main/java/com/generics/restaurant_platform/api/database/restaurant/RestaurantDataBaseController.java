@@ -12,10 +12,8 @@ public class RestaurantDataBaseController {
     @Autowired
     private RestaurantTable restaurantTable;
 
-    public Restaurant addRestaurant(String name, String address) {
-        Restaurant restaurant = new Restaurant(name, address);
+    public void addRestaurant(Restaurant restaurant) {
         restaurantTable.save(restaurant);
-        return restaurant;
     }
 
     public List<Restaurant> getAllRestaurants() {

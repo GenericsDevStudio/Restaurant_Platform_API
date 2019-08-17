@@ -17,7 +17,8 @@ public class RegistrationController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public Answer registration(String fio, String email, String pass) {
         if(userDataBaseController.findUser(email) == null) {
-            User user = userDataBaseController.addUser(fio, email, pass);
+            User user = new User(fio, email, pass);
+            userDataBaseController.addUser(user);
             return new RegistrationAnswer(200, "OK", user.getId());
         } else {
             return new Answer(400, "User already exists");

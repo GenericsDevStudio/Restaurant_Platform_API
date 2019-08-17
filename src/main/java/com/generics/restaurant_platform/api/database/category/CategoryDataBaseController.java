@@ -13,10 +13,8 @@ public class CategoryDataBaseController {
     @Autowired
     private CategoryTable categoryTable;
 
-    public Category addCategory(String name) {
-        Category category = new Category(name);
+    public void addCategory(Category category) {
         categoryTable.save(category);
-        return category;
     }
 
     public List<Category> getAllCategories() {

@@ -25,9 +25,7 @@ public class DishDataBaseController {
         return dishTable.findByName(name);
     }
 
-    public Dish addDish(int categoryId, String name, String description, String price) {
-        Dish dish = new Dish(categoryId, name, description, price);
+    public void addDish(Dish dish) {
         dishTable.save(dish);
-        return dish;
     }
 }

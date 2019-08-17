@@ -16,7 +16,8 @@ public class RestaurantAddingController {
 
     @RequestMapping(value = "/addRestaurant", method = RequestMethod.GET)
     public RegistrationAnswer addRestaurant(String name, String address) {
-        Restaurant restaurant = restaurantDataBaseController.addRestaurant(name, address);
+        Restaurant restaurant = new Restaurant(name, address);
+        restaurantDataBaseController.addRestaurant(restaurant);
         return new RegistrationAnswer(200, "OK", restaurant.getId());
     }
 }
