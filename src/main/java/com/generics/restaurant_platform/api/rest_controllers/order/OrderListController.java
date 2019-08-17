@@ -14,18 +14,18 @@ public class OrderListController {
     @Autowired
     private OrderDataBaseController orderDataBaseController;
 
-    @RequestMapping(value = "/orderList", method = RequestMethod.GET)
-    public Answer getOrderList() {
+    @RequestMapping(value = "/getOrders", method = RequestMethod.GET)
+    public Answer getOrders() {
         return new ListAnswer<Order>(200, "OK", orderDataBaseController.getAllOrders());
     }
 
-    @RequestMapping(value = "/orderListByRestaurant", method = RequestMethod.GET)
-    public Answer getOrderList(int restaurantId) {
+    @RequestMapping(value = "/getOrdersByRestaurant", method = RequestMethod.GET)
+    public Answer getOrders(int restaurantId) {
         return new ListAnswer<Order>(200, "OK", orderDataBaseController.getAllRestaurantOrders(restaurantId));
     }
 
-    @RequestMapping(value = "/orderListByRestaurantAndStatus", method = RequestMethod.GET)
-    public Answer getOrderList(int restaurantId, boolean status) {
+    @RequestMapping(value = "/getOrdersByRestaurantAndStatus", method = RequestMethod.GET)
+    public Answer getOrders(int restaurantId, boolean status) {
         return new ListAnswer<Order>(200, "OK", orderDataBaseController.getAllRestaurantStatusOrders(restaurantId, status));
     }
 }

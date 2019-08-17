@@ -17,8 +17,8 @@ public class CategoryListController {
     @Autowired
     private CategoryDataBaseController categoryDataBaseController;
 
-    @RequestMapping(value = "/categoryList", method = RequestMethod.GET)
-    public Answer getCategoryList() {
+    @RequestMapping(value = "/getCategories", method = RequestMethod.GET)
+    public Answer getCategories() {
         List<Category> list = categoryDataBaseController.getAllCategories();
         return new ListAnswer<Category>(200, "OK", list);
     }
