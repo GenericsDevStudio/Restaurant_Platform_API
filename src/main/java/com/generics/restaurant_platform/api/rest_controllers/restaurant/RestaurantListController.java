@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 public class RestaurantListController {
-
     @Autowired
     private RestaurantDataBaseController restaurantDataBaseController;
 

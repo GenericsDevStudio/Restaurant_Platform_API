@@ -1,6 +1,8 @@
 package com.generics.restaurant_platform.api.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Map;
 
 @Entity
 @Table(name = "orders")
@@ -15,9 +17,10 @@ public class Order {
 
     private int userId;
 
-    private String dishes;
+    @Convert(converter = com.generics.restaurant_platform.api.services.ListToString.class)
+    private ArrayList< Map<String, Object> > dishes;
 
-    public Order(boolean status, int restaurantId, int userId, String dishes) {
+    public Order(boolean status, int restaurantId, int userId, ArrayList< Map<String, Object> > dishes) {
         this.status = status;
         this.restaurantId = restaurantId;
         this.userId = userId;
@@ -58,11 +61,11 @@ public class Order {
         this.userId = userId;
     }
 
-    public String getDishes() {
+    public ArrayList<Map<String, Object> > getDishes() {
         return dishes;
     }
 
-    public void setDishes(String dishes) {
+    public void setDishes(ArrayList<Map<String, Object> > dishes) {
         this.dishes = dishes;
     }
 
