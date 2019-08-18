@@ -15,11 +15,10 @@ import java.util.List;
 
 @RestController
 public class RestaurantListController {
-
     @Autowired
     private RestaurantDataBaseController restaurantDataBaseController;
 
-    @RequestMapping(value = "/restaurantList", method = RequestMethod.GET)
+    @RequestMapping(value = "/getRestaurants", method = RequestMethod.GET)
     public Answer getRestaurantList() {
         List<Restaurant> list = restaurantDataBaseController.getAllRestaurants();
         return new ListAnswer<>(200, "OK", list);

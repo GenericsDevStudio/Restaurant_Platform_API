@@ -1,15 +1,8 @@
 package com.generics.restaurant_platform.api.entities;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Map;
 
-@Entity
-@Table(name = "orders")
-public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+public class OrderListing {
+    /*private int id;
 
     private boolean status;
 
@@ -17,17 +10,16 @@ public class Order {
 
     private int userId;
 
-    @Convert(converter = com.generics.restaurant_platform.api.services.ListToString.class)
-    private ArrayList< Map<String, Object> > dishes;
+    private JSONArray dishes;
 
-    public Order(boolean status, int restaurantId, int userId, ArrayList< Map<String, Object> > dishes) {
+    public OrderListing(boolean status, int restaurantId, int userId, JSONArray dishes) {
         this.status = status;
         this.restaurantId = restaurantId;
         this.userId = userId;
         this.dishes = dishes;
     }
 
-    public Order() {}
+    public OrderListing() {}
 
     public int getId() {
         return id;
@@ -61,13 +53,12 @@ public class Order {
         this.userId = userId;
     }
 
-    public ArrayList<Map<String, Object> > getDishes() {
+    public JSONArray getDishes() {
         return dishes;
     }
 
-    public void setDishes(ArrayList<Map<String, Object> > dishes) {
+    public void setDishes(JSONArray dishes) {
         this.dishes = dishes;
     }
-
-
+*/
 }
