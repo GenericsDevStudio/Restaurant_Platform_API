@@ -1,7 +1,6 @@
 package com.generics.restaurant_platform.api.database.order;
 
 import com.generics.restaurant_platform.api.entities.Order;
-import com.generics.restaurant_platform.api.entities.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 

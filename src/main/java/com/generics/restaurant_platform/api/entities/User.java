@@ -1,5 +1,7 @@
 package com.generics.restaurant_platform.api.entities;
 
+import com.generics.restaurant_platform.api.services.HashGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class User {
     private String fio;
     private String email;
     private String pass;
+    private String token;
 
     public User() {
 
@@ -21,6 +24,8 @@ public class User {
         this.fio = fio;
         this.email = email;
         this.pass = pass;
+
+        token = HashGenerator.getHash(email + pass);
     }
 
     public Integer getId() {
@@ -53,6 +58,14 @@ public class User {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     @Override
