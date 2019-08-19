@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -24,21 +25,18 @@ import java.util.HashSet;
 public class OrderAddingController {
     @Autowired
     private OrderDataBaseController orderDataBaseController;
+
     @Autowired
     private GetIdByToken getIdByToken;
+
     @Autowired
     private ListToString listToString;
+
     @Autowired
     private CheckPermission checkPermission;
-    private HashSet<UserType> userTypes;
 
-    public void setUserTypes(UserType... ust) {
-        userTypes.addAll(Arrays.asList(ust));
-    }
-    public OrderAddingController() {
-        userTypes = new HashSet<>();
-        setUserTypes(UserType.ADMIN, UserType.MODERATOR, UserType.GUEST);
-    }
+    @Resource(name = "addOrderConfig")
+    private HashSet<UserType> userTypes;
 
     @RequestMapping(value = "/addOrder", method = RequestMethod.POST)
     public Answer addOrder(String token, int restaurantId, String dishes) {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -18,17 +19,12 @@ import java.util.HashSet;
 public class RestaurantAddingController {
     @Autowired
     private RestaurantDataBaseController restaurantDataBaseController;
+
     @Autowired
     private CheckPermission checkPermission;
-    private HashSet<UserType> userTypes;
 
-    public void setUserTypes(UserType... ust) {
-        userTypes.addAll(Arrays.asList(ust));
-    }
-    public RestaurantAddingController() {
-        userTypes = new HashSet<>();
-        setUserTypes(UserType.ADMIN);
-    }
+    @Resource(name = "addRestaurantConfig")
+    private HashSet<UserType> userTypes;
 
     @RequestMapping(value = "/addRestaurant", method = RequestMethod.POST)
     public Answer addRestaurant(String token, String name, String address) {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -19,17 +20,12 @@ import java.util.HashSet;
 public class DishAddingController {
     @Autowired
     private DishDataBaseController dishDataBaseController;
+
     @Autowired
     private CheckPermission checkPermission;
-    private HashSet<UserType> userTypes;
 
-    public void setUserTypes(UserType... ust) {
-        userTypes.addAll(Arrays.asList(ust));
-    }
-    public DishAddingController() {
-        userTypes = new HashSet<>();
-        setUserTypes(UserType.ADMIN);
-    }
+    @Resource(name = "addDishConfig")
+    private HashSet<UserType> userTypes;
 
     @RequestMapping(value = "/addDish", method = RequestMethod.POST)
     public Answer addDish(String token, int categoryId, String name, String description, String price) {

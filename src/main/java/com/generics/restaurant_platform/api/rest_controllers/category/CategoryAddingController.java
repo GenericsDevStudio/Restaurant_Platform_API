@@ -7,11 +7,12 @@ import com.generics.restaurant_platform.api.json_answers.RegistrationAnswer;
 import com.generics.restaurant_platform.api.services.CheckPermission;
 import com.generics.restaurant_platform.api.user_types.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -19,17 +20,12 @@ import java.util.HashSet;
 public class CategoryAddingController {
     @Autowired
     private CategoryDataBaseController categoryDataBaseController;
+
     @Autowired
     private CheckPermission checkPermission;
-    private HashSet<UserType> userTypes;
 
-    public void setUserTypes(UserType... ust) {
-        userTypes.addAll(Arrays.asList(ust));
-    }
-    public CategoryAddingController() {
-        userTypes = new HashSet<>();
-        setUserTypes(UserType.ADMIN);
-    }
+    @Resource(name = "addCategoryConfig")
+    private HashSet<UserType> userTypes;
 
     @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
     public Answer addCategory(String token, String name) {
