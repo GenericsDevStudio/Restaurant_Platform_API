@@ -14,7 +14,7 @@ public class UserTypeConfig {
     private HashSet<UserType> addOrderCongif = new HashSet<UserType>();
     private HashSet<UserType> getOrderListCongif = new HashSet<UserType>();
     private HashSet<UserType> addRestaurantConfig = new HashSet<UserType>();
-
+    private HashSet<UserType> getUserListConfig = new HashSet<UserType>();
 
     public UserTypeConfig() {
         addCategoryConfig.addAll(Arrays.asList(UserType.ADMIN));
@@ -22,6 +22,7 @@ public class UserTypeConfig {
         addOrderCongif.addAll(Arrays.asList(UserType.ADMIN, UserType.MODERATOR, UserType.GUEST));
         getOrderListCongif.addAll(Arrays.asList(UserType.ADMIN, UserType.MODERATOR));
         addRestaurantConfig.addAll(Arrays.asList(UserType.ADMIN));
+        getUserListConfig.addAll(Arrays.asList(UserType.ADMIN));
     }
 
     @Bean
@@ -47,5 +48,10 @@ public class UserTypeConfig {
     @Bean
     public HashSet<UserType> addRestaurantConfig() {
         return addRestaurantConfig;
+    }
+
+    @Bean
+    public HashSet<UserType> getUserConfig() {
+        return getUserListConfig;
     }
 }
