@@ -1,4 +1,4 @@
-package com.generics.restaurant_platform.api.services;
+package com.generics.restaurant_platform.api.rest_controllers.root;
 
 import com.generics.restaurant_platform.api.database.token.TokenDataBaseController;
 import com.generics.restaurant_platform.api.entities.Token;
@@ -16,8 +16,11 @@ public class AddRootUser {
 
     @RequestMapping(value = "/addRoot", method = RequestMethod.POST)
     public Answer addRoot(String pass) {
-        if(pass.equals("akjdsaipdjsaopdolxcm"))
-        tokenDataBaseController.addToken(new Token("root", UserType.ADMIN, 1));
-        return new Answer(200, "OK");
+        if(pass.equals("akjdsaipdjsaopdolxcm")) {
+            tokenDataBaseController.addToken(new Token("root", UserType.ADMIN, 1));
+            return new Answer(200, "OK");
+        } else {
+            return new Answer(403, "Wrong password");
+        }
     }
 }
